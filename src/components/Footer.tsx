@@ -7,7 +7,7 @@ export const Footer = ()=>{
     const year = new Date().getFullYear();
     const {name,initials,githubLink,xLink,linkedinLink,firstName} = DATA;
     return(
-        <div className="bg-secondary-950 opacity-75 text-lg flex flex-col md:grid md:grid-cols-12 gap-2 py-4 ">
+        <div className="bg-secondary-950/75 text-lg flex flex-col md:grid md:grid-cols-12 gap-2 py-4 ">
             <p className="flex justify-center items-center col-span-5">Designed and Developed by&nbsp;
                 <Link to={'/about'} className="text-primary">{name}</Link>
             </p>
