@@ -5,7 +5,8 @@ const DATA = {
     initials: "SJ",
     xLink: "https://x.com/Shubham37026784",
     githubLink: "https://github.com/Shubham04Jha",
-    linkedinLink: "https://www.linkedin.com/in/shubham-jha-85522528a/"
+    linkedinLink: "https://www.linkedin.com/in/shubham-jha-85522528a/",
+    leetcodeLink: "https://leetcode.com/u/shubham04jha/",
 }
 
 export default DATA;
