@@ -10,9 +10,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='text-text flex flex-col pt-20'>
+      <div className='text-text flex flex-col pt-20 min-h-dvh'>
         <Navbar />
-        <div className='grow min-h-screen relative'>
+        <div className='grow relative' >
           <Background/>
           <Routes>
             <Route path='/' element={<Home/>} />
