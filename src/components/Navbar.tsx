@@ -22,7 +22,7 @@ export const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <List className="flex flex-col justify-center items-center  bg-secondary-900 list-none" onClick={()=>setIsOpen(false)}>
+                <List className="flex flex-col justify-center items-center  list-none" onClick={()=>setIsOpen(false)}>
                     <Item>
                         <RadixLink asChild>
                             <MenuItem icon={HomeIcon} text="Home" to="/home" />

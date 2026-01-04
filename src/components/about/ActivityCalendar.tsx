@@ -12,7 +12,7 @@ export const CodingActivity = ({data,loading}: {data: CalendarData[],loading: bo
             theme={explicitTheme} 
             tooltips={{
                 activity: {
-                    text: activity => `${activity.level} activities on ${new Date(activity.date).toDateString()}`,
+                    text: activity => `${activity.count} ${activity.count>1?'activities':'activity'} on ${new Date(activity.date).toDateString()}`,
                     placement: 'right',
                     offset: 6,
                     hoverRestMs: 300,
