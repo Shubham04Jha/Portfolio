@@ -18,7 +18,7 @@ const getCalendarFormat = (activityMap: Map<string,number>)=>{
     activityMap.set(todayKey,activityMap.get(todayKey)??0);
     activityMap.set(prevYearKey,activityMap.get(prevYearKey)??0);
     for(const activity of activityMap){
-        if(prevYearKey.localeCompare(activity[0])<0) data.push({
+        if(prevYearKey.localeCompare(activity[0])<=0) data.push({
             date: activity[0],
             count: activity[1],
             level: getLevel(activity[1]),
