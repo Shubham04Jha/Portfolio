@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { useStarField } from "../hooks/useStarField";
+import { useStarField } from "../hooks/useStarfield";
 
 export const Background = ()=>{
     const canvasRef = useRef<HTMLCanvasElement>(null);
