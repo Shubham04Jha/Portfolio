@@ -3,61 +3,72 @@ import { useCodingActivity } from "../../hooks/useCodingActivity"
 import { CodingActivity } from "./CodingActivity";
 import { cn } from "../../utils/cn";
 import HeroImage from "../../assets/about.png";
+import { Techstack } from "./Techstack";
+import { Toolstack } from "./Toolstack";
+
+const SECTION_HEADER = 'text-3xl text-center pb-4'
 
 export const About = ()=>{
     const {data,loading,error} = useCodingActivity();
     if(error){
         console.log(error);
     }
-    return(<div className="flex flex-col justify-center items-center gap-y-16 mx-auto md:px-24">
+    return(<div className="flex flex-col justify-center items-center gap-y-16 ">
         <Card className="flex flex-col md:flex-row gap-8">
             <div className="md:flex-2 w-full">
                 <h1 className="pb-5 text-3xl">
-                    Know Who <strong className="text-primary">I'M</strong>
+                    Know Who <strong className="text-primary">I AM</strong>
                 </h1>
-                <blockquote >
-                    <p className="text-lg text-justify">
-                        Hi everyone! I'm <span className="text-primary">Shubham Jha</span>{" "}
-                        from <span className="purple">Mumbai, India</span>.
+                <blockquote className="space-y-4 text-lg text-text-200 flex-col flex">
+                    <p className="text-justify leading-relaxed">
+                        Hi everyone! I'm <span className="text-primary font-medium">Shubham Jha</span> from <span className="text-primary">Mumbai, India</span>.
                         <br />
-                        I’m currently a{" "}
-                        <span className="text-primary">Student</span> at{" "}
-                        <span className="text-primary">VESIT, Mumbai</span>.
-                        <br />I am pursuing a Bachelors's of Engineering (BE) in{" "}
-                        <span className="text-primary">Information Technology</span>.
-                        <br />
-                        <br />
-                        Outside of coding, I love engaging in activities such as:
+                        I’m currently a <span className="text-primary">Student</span> at <span className="text-primary">VESIT</span> pursuing my BE in <span className="text-primary font-semibold">Information Technology</span>.
                     </p>
 
-                    <ul>
-                        <li className="flex gap-4 items-center">
-                            <FaHandPointRight /> Reading 📖
-                        </li>
-                        <li className="flex gap-4 items-center">
-                            <FaHandPointRight /> Watching Animes/Movies 🎞️🎬
-                        </li>
-                        <li className="flex gap-4 items-center">
-                            <FaHandPointRight /> Workout and Walks 🚶‍♂️
-                        </li>
-                    </ul>
+                    <div>
+                        <p className="mb-4 text-text-100">Beyond the screen, I find balance in:</p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-2">
+                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
+                                <FaHandPointRight className="text-primary" /> Reading 📖
+                            </li>
+                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
+                                <FaHandPointRight className="text-primary" /> Anime & Cinema 🎞️
+                            </li>
+                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
+                                <FaHandPointRight className="text-primary" /> Fitness & Walks 🚶‍♂️
+                            </li>
+                        </ul>
+                    </div>
 
-                    <p className="text-primary">
-                        "Strive to build things that make a difference!"{" "}
-                    </p>
-                    <footer className="blockquote-footer">Shubham</footer>
+                    <div className="pt-4 border-t border-primary/20 italic text-center">
+                        <p className="text-primary">"Strive to build things that make a difference!"</p>
+                        <footer className="mt-1 text-sm text-text-400">— Shubham</footer>
+                    </div>
                 </blockquote>
             </div>
             <div className="md:flex-1 flex items-center justify-center">
-                <img src={HeroImage}/>
+                <img src={HeroImage} alt="about Illustration"/>
             </div>
         </Card>
-        <div className="w-full">
-        <p className="project-heading pb-4 text-2xl text-center">
-            Days I <strong className="text-primary">Code</strong>
-        </p>
-        <CodingActivity data={data} loading={loading} />
-        </div>
+        <Card>
+            <h2 className={`${SECTION_HEADER}`}>
+                Professional <strong className="text-primary">Skillset </strong>
+            </h2>
+            <Techstack />
+        </Card>
+        <Card>
+            <h2 className={`${SECTION_HEADER}`}>
+                <strong className="text-primary">Tools</strong> I use
+            </h2>
+            <Toolstack />
+        </Card>
+        <Card className="w-full flex flex-col justify-center items-center">
+            <p className={`${SECTION_HEADER}`}>
+                Days I <strong className="text-primary">Code</strong>
+            </p>
+            <CodingActivity data={data} loading={loading} />
+        </Card>
     </div>
     )
 }

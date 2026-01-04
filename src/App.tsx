@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='text-text flex flex-col pt-20 min-h-dvh'>
+      <div className='text-text flex flex-col pt-20 min-h-dvh max-w-5xl mx-auto'>
         <Navbar />
         <div className='grow relative' >
           <Background/>
