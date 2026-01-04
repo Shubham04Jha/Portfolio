@@ -6,7 +6,7 @@ const explicitTheme = {
   dark: ['#2b2b2b', '#0e3a3a', '#166d6d', '#1fb3b3', '#6ee7e3'],
 }
 
-export const CodingActivity = ({data}: {data: CalendarData[]})=>{
+export const CodingActivity = ({data,loading}: {data: CalendarData[],loading: boolean})=>{
     return <ActivityCalendar showWeekdayLabels 
             data={data} 
             theme={explicitTheme} 
@@ -25,7 +25,7 @@ export const CodingActivity = ({data}: {data: CalendarData[]})=>{
                 colorLegend: {
                     text: level => `Activity level ${level}`
                 },
-                
             }}
+            loading={loading}
             />
 }
