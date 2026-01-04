@@ -137,14 +137,14 @@ export const useStarField = (canvasRef: RefObject<HTMLCanvasElement|null>)=>{
         const placeRandomStar = (x: number, y: number)=>{
             addTemporaryStar(stars,x,y);
         }
-        const handleTouch = (e: TouchEvent)=>placeRandomStar(e.touches[0].clientX,e.touches[0].clientY);
+        // const handleTouch = (e: TouchEvent)=>placeRandomStar(e.touches[0].clientX,e.touches[0].clientY);
         const handleMouse = (e: MouseEvent)=>placeRandomStar(e.clientX,e.clientY);
-        window.addEventListener('touchmove',handleTouch);
+        // window.addEventListener('touchmove',handleTouch);
         window.addEventListener('click',handleMouse);
         return ()=>{
             cancelAnimationFrame(animationFrameId);
             window.removeEventListener('resize', handleResize);
-            window.removeEventListener('touchmove',handleTouch);
+            // window.removeEventListener('touchmove',handleTouch);
             window.removeEventListener('click',handleMouse);
         }
     },[canvasRef])
