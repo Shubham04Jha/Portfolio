@@ -14,13 +14,15 @@ interface Star {
     lifetime?: number, 
 }
 
+const MAX_STAR_SIZE=2;
+
 const createInitialStars = (count: number, width: number, height: number): Star[] =>{
     return Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
         vx: Math.random() * 0.1,
         vy: Math.random() * 0.1,
-        size: 0.2 + Math.random() * 2,
+        size: 0.2 + Math.random() * MAX_STAR_SIZE,
         opacity: 1,
         phase: Math.random(),
         twinkleSpeed: Math.random() * 0.005,
@@ -29,7 +31,7 @@ const createInitialStars = (count: number, width: number, height: number): Star[
 
 const addTemporaryStar=(stars: Star[], x: number, y: number)=>{
     stars.push({
-        x,y, vx: 0, vy: 0, size: 0.4+Math.random()*2,
+        x,y, vx: 0, vy: 0, size: 0.4+Math.random()*MAX_STAR_SIZE, // adding 0.4 for occasionally bigger stars.
         phase: 0, opacity: 1, twinkleSpeed: 0, // these are not used
         isTemporary: true,
         createdAt: Date.now(),
@@ -40,26 +42,30 @@ const addTemporaryStar=(stars: Star[], x: number, y: number)=>{
 const updateStarLifetime = (stars: Star[],maxWidth: number, maxHeight: number, ctx: CanvasRenderingContext2D) => {
     const now = Date.now();
     stars.forEach(star => {
-        if (!star.isTemporary) return true;
+        if (!star.isTemporary){ 
+            star.phase += star.twinkleSpeed;
+            star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
+            return star;
+        }
         const elapsed = now - (star.createdAt ?? 0);
         const progress = elapsed / (star.lifetime ?? 1);
         star.opacity = Math.max(0, 1 - progress);
-        return progress < 1;
+        return star;
     }); 
     stars.forEach((star)=>{
-        star.phase += star.twinkleSpeed;
-        if(!star.isTemporary) star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
-        star.x+=star.vx;
-        star.y+=star.vy;
-        if(star.x<0||star.x>maxWidth){ 
-            star.y=Math.random()*maxHeight;
-            star.x = star.x<0?maxWidth:0; 
-            star.size=Math.random()*2;
-        }
-        if(star.y<0||star.y>maxHeight){ 
-            star.x=Math.random()*maxWidth;
-            star.y = star.y<0?maxHeight:0; 
-            star.size=Math.random()*2;
+        if(!star.isTemporary){
+            star.x+=star.vx;
+            star.y+=star.vy;
+            if(star.x<0||star.x>maxWidth){ 
+                star.y=Math.random()*maxHeight;
+                star.x = star.x<0?maxWidth:0; 
+                star.size=Math.random()*2;
+            }
+            if(star.y<0||star.y>maxHeight){ 
+                star.x=Math.random()*maxWidth;
+                star.y = star.y<0?maxHeight:0; 
+                star.size=Math.random()*2;
+            }
         }
         if(star.opacity>0){
             ctx.beginPath();
@@ -89,7 +95,9 @@ const drawConstellationLines=(ctx: CanvasRenderingContext2D,stars: Star[],maxWid
             const distance = Math.sqrt(dx * dx + dy * dy);
             if (distance < maxDistance) {
                 const opacity = 1 - distance / maxDistance;
-                ctx.strokeStyle = `rgba(235, 250, 250, ${opacity*0.4})`;
+                const factorStrength = (Math.min(stars[i].size,stars[j].size)/MAX_STAR_SIZE)*Math.min(stars[i].opacity, stars[j].opacity);
+                const factor = 1.5;
+                ctx.strokeStyle = `rgba(235, 250, 250, ${opacity*factor*factorStrength})`;
                 ctx.lineWidth = 0.5;
                 ctx.beginPath();
                 ctx.moveTo(stars[i].x, stars[i].y);
