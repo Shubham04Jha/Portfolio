@@ -41,40 +41,35 @@ const addTemporaryStar=(stars: Star[], x: number, y: number)=>{
 
 const updateStarLifetime = (stars: Star[],maxWidth: number, maxHeight: number, ctx: CanvasRenderingContext2D) => {
     const now = Date.now();
-    stars.forEach(star => {
+    stars = stars.filter(star => { // GC overhead is fine atleast it has an uppercap.
         if (!star.isTemporary){ 
-            star.phase += star.twinkleSpeed;
-            star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
-            return star;
+            return true;
         }
         const elapsed = now - (star.createdAt ?? 0);
         const progress = elapsed / (star.lifetime ?? 1);
         star.opacity = Math.max(0, 1 - progress);
-        return star;
+        return star.opacity>0;
     }); 
     stars.forEach((star)=>{
-        if(!star.isTemporary){
-            star.x+=star.vx;
-            star.y+=star.vy;
-            if(star.x<0||star.x>maxWidth){ 
-                star.y=Math.random()*maxHeight;
-                star.x = star.x<0?maxWidth:0; 
-                star.size=Math.random()*2;
-            }
-            if(star.y<0||star.y>maxHeight){ 
-                star.x=Math.random()*maxWidth;
-                star.y = star.y<0?maxHeight:0; 
-                star.size=Math.random()*2;
-            }
+        star.phase += star.twinkleSpeed;
+        if(!star.isTemporary) star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
+        star.x+=star.vx;
+        star.y+=star.vy;
+        if(star.x<0||star.x>maxWidth){ 
+            star.y=Math.random()*maxHeight;
+            star.x = star.x<0?maxWidth:0; 
+            star.size=Math.random()*2;
         }
-        if(star.opacity>0){
-            ctx.beginPath();
-            ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-            ctx.fill();
+        if(star.y<0||star.y>maxHeight){ 
+            star.x=Math.random()*maxWidth;
+            star.y = star.y<0?maxHeight:0; 
+            star.size=Math.random()*2;
         }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
     })
-
     return stars;
 };
 
