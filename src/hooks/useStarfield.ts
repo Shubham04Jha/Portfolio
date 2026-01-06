@@ -39,13 +39,13 @@ const addTemporaryStar=(stars: Star[], x: number, y: number)=>{
 
 const updateStarLifetime = (stars: Star[],maxWidth: number, maxHeight: number, ctx: CanvasRenderingContext2D) => {
     const now = Date.now();
-    // stars = stars.filter(star => {
-    //     if (!star.isTemporary) return true;
-    //     const elapsed = now - (star.createdAt ?? 0);
-    //     const progress = elapsed / (star.lifetime ?? 1);
-    //     star.opacity = Math.max(0, 1 - progress);
-    //     return progress < 1;
-    // }); //filter expired Star (dead star)
+    stars.forEach(star => {
+        if (!star.isTemporary) return true;
+        const elapsed = now - (star.createdAt ?? 0);
+        const progress = elapsed / (star.lifetime ?? 1);
+        star.opacity = Math.max(0, 1 - progress);
+        return progress < 1;
+    }); 
     stars.forEach((star)=>{
         star.phase += star.twinkleSpeed;
         if(!star.isTemporary) star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
@@ -80,9 +80,9 @@ const drawConstellationLines=(ctx: CanvasRenderingContext2D,stars: Star[],maxWid
         maxDistance = Math.min(Math.max(base*0.15,100),220);
     }
     for (let i = 0; i < stars.length; i++) {
-        if(stars[i].size<0.25) continue;
+        if(stars[i].size<0.25||stars[i].opacity==0) continue;
         for (let j = i + 1; j < stars.length; j++) {
-            if(stars[j].size<0.25) continue;
+            if(stars[j].size<0.25||stars[j].opacity==0) continue;
             if(Math.abs(stars[i].x-stars[j].x)>maxDistance&&Math.abs(stars[i].y-stars[j].y)>maxDistance) continue;
             const dx = stars[i].x - stars[j].x;
             const dy = stars[i].y - stars[j].y;
