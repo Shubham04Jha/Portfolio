@@ -39,13 +39,13 @@ const addTemporaryStar=(stars: Star[], x: number, y: number)=>{
 
 const updateStarLifetime = (stars: Star[],maxWidth: number, maxHeight: number, ctx: CanvasRenderingContext2D) => {
     const now = Date.now();
-    stars = stars.filter(star => {
-        if (!star.isTemporary) return true;
-        const elapsed = now - (star.createdAt ?? 0);
-        const progress = elapsed / (star.lifetime ?? 1);
-        star.opacity = Math.max(0, 1 - progress);
-        return progress < 1;
-    }); //filter expired Star (dead star)
+    // stars = stars.filter(star => {
+    //     if (!star.isTemporary) return true;
+    //     const elapsed = now - (star.createdAt ?? 0);
+    //     const progress = elapsed / (star.lifetime ?? 1);
+    //     star.opacity = Math.max(0, 1 - progress);
+    //     return progress < 1;
+    // }); //filter expired Star (dead star)
     stars.forEach((star)=>{
         star.phase += star.twinkleSpeed;
         if(!star.isTemporary) star.opacity= 0.2 + Math.abs(Math.sin(star.phase)) * 0.8;
@@ -61,10 +61,12 @@ const updateStarLifetime = (stars: Star[],maxWidth: number, maxHeight: number, c
             star.y = star.y<0?maxHeight:0; 
             star.size=Math.random()*2;
         }
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.fill();
+        if(star.opacity>0){
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+            ctx.fill();
+        }
     })
 
     return stars;
