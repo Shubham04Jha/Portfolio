@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const useMovableItem = (itemLength=40, offsetMultiplier=3)=>{ // itemlength and offsetMultiplier to define how far out to the edge the item can move.
+export const useDrag = (itemLength=40, offsetMultiplier=3)=>{ // itemlength and offsetMultiplier to define how far out to the edge the item can move.
     const [position, setPosition] = useState({x:0,y:0});
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
