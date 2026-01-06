@@ -81,6 +81,7 @@ const drawConstellationLines=(ctx: CanvasRenderingContext2D,stars: Star[],maxWid
         if(stars[i].size<0.25) continue;
         for (let j = i + 1; j < stars.length; j++) {
             if(stars[j].size<0.25) continue;
+            if(Math.abs(stars[i].x-stars[j].x)>maxDistance&&Math.abs(stars[i].y-stars[j].y)>maxDistance) continue;
             const dx = stars[i].x - stars[j].x;
             const dy = stars[i].y - stars[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -139,8 +140,8 @@ export const useStarField = (canvasRef: RefObject<HTMLCanvasElement|null>)=>{
         }
         // const handleTouch = (e: TouchEvent)=>placeRandomStar(e.touches[0].clientX,e.touches[0].clientY);
         const handleMouse = (e: MouseEvent)=>placeRandomStar(e.clientX,e.clientY);
-        // window.addEventListener('touchmove',handleTouch);
         window.addEventListener('click',handleMouse);
+        // window.addEventListener('touchmove',handleTouch);
         return ()=>{
             cancelAnimationFrame(animationFrameId);
             window.removeEventListener('resize', handleResize);
