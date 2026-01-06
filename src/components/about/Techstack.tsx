@@ -11,7 +11,7 @@ import { RiNextjsFill, } from "react-icons/ri";
 
 const SkillBadge = ({ icon: Icon, name }: { icon: any, name: string }) => (
   <div className="flex items-center gap-3 px-6 py-3 border-2 border-primary/40 rounded-full hover:border-primary transition-all duration-300 bg-background/20 group">
-    <Icon className="text-2xl text-primary group-hover:scale-120 transition-transform" />
+    <Icon className="text-2xl text-primary group-hover:scale-110 transition-transform" />
     <span className="text-text font-medium whitespace-nowrap">{name}</span>
   </div>
 );
@@ -34,6 +34,7 @@ export const Techstack = () => {
     { icon: SiRadixui, name: "Radix UI" },
     { icon: SiTurborepo, name: "Turborepo" },
     { icon: SiPostman, name: "Postman" },
+    { icon:FaC, name:"C"}
   ];
 
   return (

@@ -11,7 +11,7 @@ export const Toolstack = () => {
     <div className="flex flex-wrap justify-center gap-5 pt-8 max-w-5xl mx-auto">
       {tools.map((tool) => (
         <div key={tool.name} className="flex items-center gap-3 px-6 py-3 border-2 border-accent/30 rounded-full hover:border-accent hover:cursor-default transition-all bg-background/20 group">
-          <tool.icon className="text-2xl text-accent group-hover:scale-120" />
+          <tool.icon className="text-2xl text-accent group-hover:scale-110" />
           <span className="text-text font-medium">{tool.name}</span>
         </div>
       ))}
