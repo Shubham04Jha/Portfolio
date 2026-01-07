@@ -42,7 +42,7 @@ export const About = ()=>{
                     </div>
 
                     <div className="pt-4 border-t border-primary/20 italic text-center">
-                        <p className="text-primary">"Strive to build things that make a difference!"</p>
+                        <p className="text-primary">"If you always make the best move irrespective of your position, its very hard to lose!"</p>
                         <footer className="mt-1 text-sm text-text-400">— Shubham</footer>
                     </div>
                 </blockquote>
