@@ -4,8 +4,7 @@ export const useDrag = ()=>{
     const [isOpen, setIsOpen] = useState(false);
     const [position, setPosition] = useState({x:0,y: 0});
     const [isDragging, setIsDragging] = useState(false);
-    // const dragStartRef = useRef({startX:0, startY:0});
-    // const clickBlockerRef = useRef(false);
+    const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
     const setSafePosition = (x: number,y: number)=>{
         const width = window.innerWidth;
@@ -34,52 +33,33 @@ export const useDrag = ()=>{
         }
         setPosition(prev=>({...prev, x}));
     }
-
-    // const onPointerDown = (e: React.MouseEvent)=>{
-    //     console.log('onPointerDown')
-    //     // dragStartRef.current = ({startX: e.clientX, startY: e.clientY});
-    // }
+    const onPointerDown = (e: React.MouseEvent)=>{
+        setDragStart({x: e.clientX, y: e.clientY});
+    };
     const onPointerMove = (e: React.MouseEvent)=>{
-        console.log('onPointerMove')
-        // const deltaX = dragStartRef.current.startX-e.clientX;
-        // const deltaY = dragStartRef.current.startY-e.clientY;
-        // const dist = Math.hypot(deltaX,deltaY);
-        // if(dist>5){
-        //     setIsDragging(true);
-        //     setSafePosition(e.clientX,e.clientY);
-        // }
-        setIsDragging(true);
-        setSafePosition(e.clientX,e.clientY);
+        if(Math.abs(e.clientX-dragStart.x)+Math.abs(e.clientY-dragStart.y)>5){ 
+            setIsDragging(true);
+            setSafePosition(e.clientX, e.clientY);
+        }
     }
     const onOpenChange=(val: boolean)=>{
         if(!val) setIsOpen(false); // only used to close the menu.
     }
     const onPointerUp = (e: React.MouseEvent)=>{
-        console.log('onPointerUp');
         if(isDragging){
             handleSnap();
         }
-        // else{
-        //     // setIsOpen(isOpen=>!isOpen);
-        // }
-        // console.log('setIsDragging will become false now');
         if(isDragging) setIsOpen(false);
         else setIsOpen(true);
         setIsDragging(false);
     }
-    // const onClickCapture = (e: React.MouseEvent)=>{
-    //     console.log('onClick Capture running, HBD to you.');
-    //     // if(!isDragging) setIsOpen(isOpen=>!isOpen);
-    // }
     useEffect(()=>{
         setPosition({x: window.innerWidth-offset,y: innerHeight-offset})
     },[])
     return{
-        isOpen, position, isDragging, setIsOpen, onOpenChange,
+        isOpen, position, isDragging, onOpenChange,
         dragHandlers:{
-            // onPointerDown, 
-            onPointerMove, onPointerUp, 
-            //onClickCapture
+            onPointerMove, onPointerUp,onPointerDown 
         }
     }
 }
