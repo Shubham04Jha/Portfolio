@@ -3,60 +3,150 @@ import {DropdownMenu}  from "radix-ui";
 import { Menu as MenuIcon } from "lucide-react";
 import { ButtonIcon } from "../icons/ButtonIcon";
 import { cn } from "../../utils/cn";
+import { FaDotCircle } from "react-icons/fa";
+import { useDrag, useDrag2, useDrag3 } from "../../hooks/useDrag";
+import { useNavigate } from "react-router-dom";
 
-const IconSize = 40;
 
-export const NavMobile = () => {
-    const [position, setPosition] = useState({ x: window.innerWidth*0.9, y: window.innerHeight*0.9 });
-    const [isDragging, setIsDragging] = useState(false);
-
-    const handlePointerMove = (e: React.PointerEvent) => {
-        if(isDragging) setSafePosition({x: e.clientX,y:e.clientY})
-    };
-
-    const setSafePosition=({x,y}:{x: number, y: number})=>{
-        const offset = IconSize/2;
-        if(x<offset*3){ // offset*3 because of transform (-50%)
-            x = offset*3;
-        }else if (x>=window.innerWidth-offset){
-            x = window.innerWidth-offset
-        }
-        if(y<offset*3){
-            y = offset*3;
-        }else if(y>=window.innerHeight-offset){
-            y = window.innerHeight-offset;
-        }
-        setPosition({x,y});
-    }
-
-    const handleSnap = () => {
-        const horizontalMidpoint = window.innerWidth / 2;
-        const isMiddleRegion = position.x>0.3*window.innerWidth&&position.x<0.7*window.innerWidth;
-        const isPastMidpoint = position.x<horizontalMidpoint;
-        if(isMiddleRegion) setPosition(prev => ({
-            ...prev, // current y.
-            x: isPastMidpoint ? 0.2*window.innerWidth : window.innerWidth*0.8 
-        }));
-        setIsDragging(false);
-    };
-
+export const NavMobile2 = () => {
+    const [selected, setSelected] = useState<string>('about');
+    const {position, isDragging, isOpen, onOpenChange, dragHandlers } = useDrag();
+    const navigate = useNavigate();
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger
-        onPointerDown={() => setIsDragging(true)}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handleSnap}
+    <DropdownMenu.Root open={isOpen} onOpenChange={onOpenChange} >
+      <DropdownMenu.Trigger asChild
+        {...dragHandlers}
         style={{ 
           left: position.x, 
           top: position.y,
           transition: isDragging ? 'none' : 'all 0.3s ease-out',
-          transform: 'translate(-50%,-50%)'
+          transform: 'translate(-60%,-50%)'
         }}
-        // The scale-150 makes it grow when dragging
         className={cn("fixed touch-none z-50 transition-transform ",isDragging&&"scale-150")}
       >
         < ButtonIcon icon={MenuIcon} iconSize={36} className="bg-background/50 rounded-full backdrop-blur-lg" />
       </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+            <DropdownMenu.Label className="DropdownMenuLabel">
+            People
+            </DropdownMenu.Label>
+            <DropdownMenu.RadioGroup value={selected} onValueChange={setSelected}>
+                <DropdownMenu.RadioItem
+                    className="DropdownMenuRadioItem"
+                    value="about"
+                >
+                    <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+                        <FaDotCircle />
+                    </DropdownMenu.ItemIndicator>
+                    about
+                </DropdownMenu.RadioItem>
+                <DropdownMenu.RadioItem
+                    className="DropdownMenuRadioItem"
+                    value="stars"
+                >
+                    <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+                        <FaDotCircle />
+                    </DropdownMenu.ItemIndicator>
+                    stars
+                </DropdownMenu.RadioItem>
+            </DropdownMenu.RadioGroup>
+
+            <DropdownMenu.Arrow className="DropdownMenuArrow" />
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
     </DropdownMenu.Root>
   );
 };
+
+export const NavMobile3 = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const {position, isDragging, dragHandlers } = useDrag2();
+    // The Gatekeeper Function
+    const handleOpenChange = (requestedOpenState: boolean) => {
+      // If we are currently dragging, OR if we are requesting to open 
+      // but the interaction was actually a drag, we block it.
+      if (isDragging && requestedOpenState === true) {
+        return; 
+      }
+      
+      setIsOpen(requestedOpenState);
+    };
+
+    return (
+        <DropdownMenu.Root open={isOpen&&!isDragging} onOpenChange={handleOpenChange} >
+        <DropdownMenu.Trigger asChild
+            {...dragHandlers}
+            style={{ 
+            left: position.x, 
+            top: position.y,
+            transition: isDragging ? 'none' : 'all 0.3s ease-out',
+            transform: 'translate(-60%,-50%)'
+            }}
+            className={cn("fixed touch-none z-50 transition-transform ",isDragging&&"scale-150")}
+            
+        >
+            < ButtonIcon icon={MenuIcon} iconSize={36} className="bg-background/50 rounded-full backdrop-blur-lg" />
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Portal>
+            <DropdownMenu.Content>
+                <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+                <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+            </DropdownMenu.Content>
+        </DropdownMenu.Portal>
+        </DropdownMenu.Root>
+    );
+};
+
+export const NavMobile = ()=>{
+    const {isDragging, isOpen, setIsOpen, position, dragHandlers} = useDrag3();
+    const [selected,setSelected] = useState('about');
+    return (
+    <DropdownMenu.Root open={isOpen&&!isDragging} onOpenChange={(val: boolean)=>{
+        console.log('inside onOpenChange with requestedopen: '+val);
+        setIsOpen(val);
+    }}>
+      <DropdownMenu.Trigger asChild
+        {...dragHandlers}
+        style={{ 
+          left: position.x, 
+          top: position.y,
+          transition: isDragging ? 'none' : 'all 0.3s ease-out',
+          transform: 'translate(-60%,-50%)'
+        }}
+        className={cn("fixed touch-none z-50 transition-transform ",isDragging&&"scale-150")}
+      >
+        < ButtonIcon icon={MenuIcon} iconSize={36} className="bg-background/50 rounded-full backdrop-blur-lg" />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+            <DropdownMenu.Label className="DropdownMenuLabel">
+            People
+            </DropdownMenu.Label>
+            <DropdownMenu.RadioGroup value={selected} onValueChange={setSelected}>
+                <DropdownMenu.RadioItem
+                    className="DropdownMenuRadioItem"
+                    value="about"
+                >
+                    <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+                        <FaDotCircle />
+                    </DropdownMenu.ItemIndicator>
+                    about
+                </DropdownMenu.RadioItem>
+                <DropdownMenu.RadioItem
+                    className="DropdownMenuRadioItem"
+                    value="stars"
+                >
+                    <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+                        <FaDotCircle />
+                    </DropdownMenu.ItemIndicator>
+                    stars
+                </DropdownMenu.RadioItem>
+            </DropdownMenu.RadioGroup>
+
+            <DropdownMenu.Arrow className="DropdownMenuArrow" />
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+}
