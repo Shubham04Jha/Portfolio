@@ -7,6 +7,7 @@ const explicitTheme = {
 }
 
 export const CodingActivity = ({data,loading}: {data: CalendarData[],loading: boolean})=>{
+    if(data.length==0) return;
     return <ActivityCalendar showWeekdayLabels 
             data={data} 
             theme={explicitTheme} 
