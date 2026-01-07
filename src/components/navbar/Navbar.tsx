@@ -1,126 +1,68 @@
 import { NavigationMenu } from "radix-ui";
-import { Link } from "react-router-dom";
-import {Menu as MenuIcon, Home as HomeIcon, User as UserIcon,Star as StarIcon, type LucideIcon, Mail} from "lucide-react"
-import { useState } from "react";
+import { Link, useLocation} from "react-router-dom";
+import { Mail, Home, User, Star, type LucideIcon} from "lucide-react"
 import DATA from "../../config";
-import type { IconType } from "react-icons";
-
-export const Navbar1 = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const { Root, List, Item, Link: RadixLink } = NavigationMenu;
-    const {initials} = DATA;
-    return (
-        <Root className="bg-secondary-900/75 fixed top-0 left-0 right-0  z-50">
-            <div className="flex flex-col justify-center min-h-16 px-[8%]">
-                <div className="flex items-center justify-between font-bold text-accent">
-                    <Link to={'/about'} className="text-4xl">{initials}.</Link>
-                    <MenuIcon 
-                        className="size-10 cursor-pointer" 
-                        strokeWidth={3} 
-                        onClick={() => setIsOpen(p => !p)} 
-                    />
-                </div>
-            </div>
-            {isOpen && (
-                <List className="flex flex-col justify-center items-center  list-none" onClick={()=>setIsOpen(false)}>
-                    <Item>
-                        <RadixLink asChild>
-                            <MenuItem icon={HomeIcon} text="Home" to="/home" />
-                        </RadixLink>
-                    </Item>
-                    <Item>
-                        <RadixLink asChild>
-                            <MenuItem icon={UserIcon} text="About" to="/about" />
-                        </RadixLink>
-                    </Item>
-                    <Item>
-                        <RadixLink asChild>
-                            <MenuItem icon={Mail} text="Reachout" to="/reach-out" />
-                        </RadixLink>
-                    </Item>
-                    <Item>
-                        <RadixLink asChild>
-                            <MenuItem icon={StarIcon} text="Stars" to="/stars" />
-                        </RadixLink>
-                    </Item>
-                </List>
-            )}
-        </Root>
-    );
-};
-
-interface MenuItemProps {
-    icon: LucideIcon|IconType; 
-    text: string;
-    to: string;
-}
-
-// Pass the Icon component itself as a prop
-const MenuItem = ({ icon: Icon, text, to }: MenuItemProps) => {
-    return (
-        <div className="flex items-center gap-4 text-2xl py-2">
-            <Icon className="size-7" />
-            <Link to={to}>{text}</Link>
-        </div>
-    );
-};
-
-
-import { X as CloseIcon, Home, User, Star } from "lucide-react";
-import { cn } from "../../utils/cn"; // Using your existing utility
+import { cn } from "../../utils/cn";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { NavMobile } from "./NavMobile";
+import type { IconType } from "react-icons";
+import { useState } from "react";
+
+
+
+const NAV_ITEMS = [
+    { label: "Home", path: "/home", icon: Home },
+    { label: "About", path: "/about", icon: User },
+    { label: "Reachout", path: "/reach-out", icon: Mail },
+    { label: "Stars", path: "/stars", icon: Star },
+];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { Root, List, Item, Link: RadixLink } = NavigationMenu;
   const {isMobile} = useIsMobile();
+  const {initials} = DATA;
   return (
-    <Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75">
       {/* Top Bar */}
       <div className={cn(
-        "flex items-center justify-between px-[8%] min-h-20 transition-all",
-        isOpen ? "bg-background/75 backdrop-blur-md" : "bg-background/75  border-b border-primary/10"
+        "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10"
       )}>
-        <Link to="/about" className="text-3xl font-bold text-accent tracking-tighter">SJ.</Link>
-        
+        <Link to="/about" className="text-3xl font-bold text-accent ">{initials}.</Link>
         {isMobile?
-          <NavMobile />:
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-primary p-2 hover:bg-primary/10 rounded-lg transition-colors"
-          >
-            {isOpen ? <CloseIcon size={32} /> : <MenuIcon size={32} />}
-          </button>}
+          <NavMobile NAV_ITEMS={NAV_ITEMS} />:
+          <NavDesktop/>}
       </div>
-
-      {/* Full Screen Drawer */}
-      <div className={cn(
-        "absolute top-20 left-0 w-full bg-background/75 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden border-b border-primary/20",
-        isOpen ? "h-[calc(100vh-80px)] opacity-100" : "h-0 opacity-0 pointer-events-none"
-      )}>
-        <List className="flex flex-col items-start px-[10%] pt-10 gap-8 ">
-          <NavItem to="/home" icon={Home} text="Home"  onClick={() => setIsOpen(false)} />
-          <NavItem to="/about" icon={User} text="About"  onClick={() => setIsOpen(false)} />
-          <NavItem to="/reach-out" icon={Mail} text="Reach Out"  onClick={() => setIsOpen(false)} />
-          <NavItem to="/stars" icon={Star} text="Stars"  onClick={() => setIsOpen(false)} />
-        </List>
-      </div>
-    </Root>
+    </NavigationMenu.Root>
   );
 };
 
-const NavItem = ({ to, icon: Icon, text,onClick }: any) => (
-  <NavigationMenu.Item className={cn("w-full transform transition-all duration-500 translate-x-0")}>
-    <NavigationMenu.Link asChild>
-      <Link 
-        to={to} 
-        onClick={onClick}
-        className="group flex items-center gap-6 text-3xl font-medium text-text-200 hover:text-primary transition-colors"
-      >
-        <Icon className="size-8 text-primary group-hover:scale-125 transition-transform duration-300" />
+const NavDesktop = ()=>{
+    const location = useLocation();
+    const [selected,setIsSelected] = useState<string>(location.pathname);
+    return (
+        <NavigationMenu.List className={cn("flex items-center w-full justify-around gap-8")} >
+          {
+            NAV_ITEMS.map((item)=>
+            <NavItem 
+                selected={selected}
+                icon={item.icon}
+                text={item.label}
+                key={item.path}
+                path={item.path}
+                onClick= {()=>{
+                    setIsSelected(item.path);
+                }}
+            />)
+          }
+          <NavigationMenu.Indicator className="border-b border-accent/10"/>
+        </NavigationMenu.List>
+    )
+}
+
+const NavItem = ({ icon: Icon, text, path, onClick, selected }: { path: string, icon: LucideIcon | IconType; text: string; onClick?: () => void; selected: string }) => (
+  <NavigationMenu.Item className={cn("w-full group transform transition-all duration-500 translate-x-0","py-1 px-4 hover:bg-accent/10 rounded-md","text-xl hover:cursor-pointer",selected===path&&"bg-accent/10")} value={text} onClick={onClick}>
+    <Link className="flex gap-2 items-center" to={path}>
+        <Icon className="size-6 text-primary group-hover:scale-125 transition-transform duration-300" />
         <span>{text}</span>
-      </Link>
-    </NavigationMenu.Link>
+    </Link>
   </NavigationMenu.Item>
 );
