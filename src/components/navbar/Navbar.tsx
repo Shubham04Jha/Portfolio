@@ -11,7 +11,7 @@ import { useState } from "react";
 
 
 const NAV_ITEMS = [
-    { label: "Home", path: "/home", icon: Home },
+    { label: "Home", path: "/", icon: Home },
     { label: "About", path: "/about", icon: User },
     { label: "Projects", path: "/projects", icon: FileChartLine },
     { label: "Resume", path: "/resume", icon: FileUser },
