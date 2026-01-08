@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import DATA from "../config";
-import { SocialIcon } from "./icons/SocialIcon";
+import { SocialIcon } from "./ui/icons/SocialIcon";
 import { SiLeetcode } from "react-icons/si";
 
 export const Footer = ()=>{

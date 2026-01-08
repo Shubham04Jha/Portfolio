@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {DropdownMenu}  from "radix-ui";
 import { Menu as MenuIcon, type LucideIcon } from "lucide-react";
-import { ButtonIcon } from "../icons/ButtonIcon";
+import { ButtonIcon } from "../ui/icons/ButtonIcon";
 import { cn } from "../../utils/cn";
 import { FaDotCircle } from "react-icons/fa";
 import { useDrag } from "../../hooks/useDrag";
