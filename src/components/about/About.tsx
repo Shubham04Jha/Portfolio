@@ -49,7 +49,7 @@ export const About = ()=>{
                 </blockquote>
             </div>
             <div className="md:flex-1 flex items-center justify-center">
-                <img src={HeroImage} alt="about Illustration"/>
+                <img src={HeroImage} alt="person using laptop"/>
             </div>
         </Card>
         <Card>

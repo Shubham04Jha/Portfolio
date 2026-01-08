@@ -24,7 +24,7 @@ export const Navbar = () => {
     <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75">
       {/* Top Bar */}
       <div className={cn(
-        "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10",
+        "flex items-center justify-between transition-all max-w-5xl mx-auto border-b border-primary/10",
         "min-h-16","px-4"
       )}>
         <Link to="/about" className="text-4xl font-bold text-accent mx-auto md:mx-0">{initials}.</Link>
@@ -60,8 +60,8 @@ const NavDesktop = ()=>{
 }
 
 const NavItem = ({ icon: Icon, text, path, onClick, selected }: { path: string, icon: LucideIcon | IconType; text: string; onClick?: () => void; selected: string }) => (
-  <NavigationMenu.Item className={cn("w-full group transform transition-all duration-300 translate-x-0","py-2 px-4 hover:bg-accent/10 rounded-md","text-xl hover:cursor-pointer",selected===path&&"bg-accent/10")} value={text} onClick={onClick}>
-    <Link className="flex gap-2 items-center" to={path}>
+  <NavigationMenu.Item className={cn("w-full group transform transition-all duration-300 translate-x-0"," hover:bg-accent/10 rounded-md","text-xl hover:cursor-pointer",selected===path&&"bg-accent/10")} value={text} onClick={onClick}>
+    <Link className="flex gap-2 items-center py-2 px-5 " to={path}>
         <Icon className="size-6 text-primary group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-300" />
         <span>{text}</span>
     </Link>

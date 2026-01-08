@@ -8,6 +8,7 @@ const DATA = {
     linkedinLink: "https://www.linkedin.com/in/shubham-jha-85522528a/",
     leetcodeLink: "https://leetcode.com/u/shubham04jha/",
     codeforcesLink: "https://codeforces.com/profile/Shubham_04Jha",
+    instagramLink: "https://www.instagram.com/bl42e_1331/",
 }
 
 export const codeforcesLink = "https://codeforces.com/profile/Shubham_04Jha";
