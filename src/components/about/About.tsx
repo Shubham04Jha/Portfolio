@@ -5,6 +5,7 @@ import { cn } from "../../utils/cn";
 import HeroImage from "../../assets/about.png";
 import { Techstack } from "./Techstack";
 import { Toolstack } from "./Toolstack";
+import { Reachout } from "../Reachout";
 
 const SECTION_HEADER = 'text-3xl text-center pb-4'
 
@@ -13,8 +14,8 @@ export const About = ()=>{
     if(error){
         console.log(error);
     }
-    return(<div className="flex flex-col justify-center items-center gap-y-16 ">
-        <Card className="flex flex-col md:flex-row gap-8">
+    return(<div className="flex flex-col justify-center items-center gap-y-16 pb-8">
+        <Card className="flex flex-col md:flex-row gap-8 ">
             <div className="md:flex-2 w-full">
                 <h1 className="pb-5 text-3xl">
                     Know Who <strong className="text-primary">I AM</strong>
@@ -69,12 +70,13 @@ export const About = ()=>{
             </p>
             <CodingActivity data={data} loading={loading} />
         </Card>
+        <Reachout />
     </div>
     )
 }
 
 const Card = ({children,className}: React.HTMLAttributes<HTMLDivElement>)=><div 
-className={cn("rounded-md px-4 py-2",className)}
+className={cn("rounded-md px-4 py-2 ",className)}
 >
     {children}
 </div>
