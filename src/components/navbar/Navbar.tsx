@@ -21,12 +21,13 @@ export const Navbar = () => {
   const {isMobile} = useIsMobile();
   const {initials} = DATA;
   return (
-    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75 px-20">
+    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75 md:px-20">
       {/* Top Bar */}
       <div className={cn(
-        "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10"
+        "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10",
+        "min-h-16"
       )}>
-        <Link to="/about" className="text-3xl font-bold text-accent ">{initials}.</Link>
+        <Link to="/about" className="text-4xl font-bold text-accent mx-auto md:mx-0">{initials}.</Link>
         {isMobile?
           <NavMobile NAV_ITEMS={NAV_ITEMS} />:
           <NavDesktop/>}
