@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
-import { cn } from "../../utils/cn";
+import { cn } from "../../../utils/cn";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement>{
     icon: LucideIcon|IconType;
