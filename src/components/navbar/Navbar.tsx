@@ -60,9 +60,9 @@ const NavDesktop = ()=>{
 }
 
 const NavItem = ({ icon: Icon, text, path, onClick, selected }: { path: string, icon: LucideIcon | IconType; text: string; onClick?: () => void; selected: string }) => (
-  <NavigationMenu.Item className={cn("w-full group transform transition-all duration-500 translate-x-0","py-1 px-4 hover:bg-accent/10 rounded-md","text-xl hover:cursor-pointer",selected===path&&"bg-accent/10")} value={text} onClick={onClick}>
+  <NavigationMenu.Item className={cn("w-full group transform transition-all duration-300 translate-x-0","py-2 px-4 hover:bg-accent/10 rounded-md","text-xl hover:cursor-pointer",selected===path&&"bg-accent/10")} value={text} onClick={onClick}>
     <Link className="flex gap-2 items-center" to={path}>
-        <Icon className="size-6 text-primary group-hover:scale-125 transition-transform duration-300" />
+        <Icon className="size-6 text-primary group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-300" />
         <span>{text}</span>
     </Link>
   </NavigationMenu.Item>
