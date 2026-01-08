@@ -1,6 +1,6 @@
 import { NavigationMenu } from "radix-ui";
 import { Link, useLocation} from "react-router-dom";
-import { Home, User, Star, type LucideIcon, FileUser, FileChartLine} from "lucide-react"
+import { Home, User, type LucideIcon, FileUser, FileChartLine} from "lucide-react"
 import DATA from "../../config";
 import { cn } from "../../utils/cn";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -21,11 +21,11 @@ export const Navbar = () => {
   const {isMobile} = useIsMobile();
   const {initials} = DATA;
   return (
-    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75 md:px-20">
+    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75">
       {/* Top Bar */}
       <div className={cn(
         "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10",
-        "min-h-16"
+        "min-h-16","px-4"
       )}>
         <Link to="/about" className="text-4xl font-bold text-accent mx-auto md:mx-0">{initials}.</Link>
         {isMobile?
