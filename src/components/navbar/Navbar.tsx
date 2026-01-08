@@ -21,7 +21,7 @@ export const Navbar = () => {
   const {isMobile} = useIsMobile();
   const {initials} = DATA;
   return (
-    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75">
+    <NavigationMenu.Root className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/75 px-20">
       {/* Top Bar */}
       <div className={cn(
         "flex items-center justify-between py-1 transition-all max-w-5xl mx-auto border-b border-primary/10"
