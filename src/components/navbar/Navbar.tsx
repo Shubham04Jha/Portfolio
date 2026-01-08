@@ -1,6 +1,6 @@
 import { NavigationMenu } from "radix-ui";
 import { Link, useLocation} from "react-router-dom";
-import { Mail, Home, User, Star, type LucideIcon} from "lucide-react"
+import { Home, User, Star, type LucideIcon, FileUser, FileChartLine} from "lucide-react"
 import DATA from "../../config";
 import { cn } from "../../utils/cn";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -13,8 +13,8 @@ import { useState } from "react";
 const NAV_ITEMS = [
     { label: "Home", path: "/home", icon: Home },
     { label: "About", path: "/about", icon: User },
-    { label: "Reachout", path: "/reach-out", icon: Mail },
-    { label: "Stars", path: "/stars", icon: Star },
+    { label: "Projects", path: "/projects", icon: FileChartLine },
+    { label: "Resume", path: "/resume", icon: FileUser },
 ];
 
 export const Navbar = () => {
