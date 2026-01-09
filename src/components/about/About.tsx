@@ -1,4 +1,4 @@
-import { FaHandPointRight } from "react-icons/fa6";
+import { FaBook, FaHandPointRight } from "react-icons/fa6";
 import { useCodingActivity } from "../../hooks/useCodingActivity"
 import { CodingActivity } from "./CodingActivity";
 import { cn } from "../../utils/cn";
@@ -6,55 +6,70 @@ import HeroImage from "../../assets/about.png";
 import { Techstack } from "./Techstack";
 import { Toolstack } from "./Toolstack";
 import { Reachout } from "../Reachout";
+import { HeroImageCard } from "../ui/HeroImageCard";
+import { FaBookReader } from "react-icons/fa";
 
-const SECTION_HEADER = 'text-3xl text-center pb-4'
+const SECTION_HEADER = 'text-3xl text-center pb-4';
+
+const Hobbies = [
+                    { icon: <FaBookReader />, text: "Reading" },
+                    { icon: "🎞️", text: "Anime & Cinema" },
+                    { icon: "🚶‍♂️", text: "Fitness & Walks" },
+                    { icon: "🧠", text: "Deep Work" }
+                ]
 
 export const About = ()=>{
     const {data,loading,error} = useCodingActivity();
     if(error){
         console.log(error);
     }
-    return(<div className="flex flex-col justify-center items-center gap-y-16 pb-8">
-        <Card className="flex flex-col md:flex-row gap-8 ">
-            <div className="md:flex-2 w-full">
-                <h1 className="pb-5 text-3xl">
-                    Know Who <strong className="text-primary">I AM</strong>
-                </h1>
-                <blockquote className="space-y-4 text-lg text-text-200 flex-col flex">
-                    <p className="text-justify leading-relaxed">
-                        Hi everyone! I'm <span className="text-primary font-medium">Shubham Jha</span> from <span className="text-primary">Mumbai, India</span>.
-                        <br />
-                        I’m currently a <span className="text-primary">Student</span> at <span className="text-primary">VESIT</span> pursuing my BE in <span className="text-primary font-semibold">Information Technology</span>.
-                    </p>
+    return(<div className="flex flex-col items-center gap-12 pb-20">
+        <Card className="flex flex-col md:flex-row gap-16 items-center p-8 md:p-12">
+    <div className="md:flex-2 w-full space-y-10">
+        {/* Header */}
+        <header className="space-y-2">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+                Know Who <span className="text-primary">I AM</span>
+            </h1>
+            <div className="h-1 w-20 bg-primary rounded-full" /> {/*underline*/}
+        </header>
 
-                    <div>
-                        <p className="mb-4 text-text-100">Beyond the screen, I find balance in:</p>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-2">
-                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
-                                <FaHandPointRight className="text-primary" /> Reading 📖
-                            </li>
-                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
-                                <FaHandPointRight className="text-primary" /> Anime & Cinema 🎞️
-                            </li>
-                            <li className="flex gap-3 items-center hover:text-primary transition-colors">
-                                <FaHandPointRight className="text-primary" /> Fitness & Walks 🚶‍♂️
-                            </li>
-                        </ul>
-                    </div>
+        <div className="space-y-6 text-lg text-text-200">
+            <p className="leading-relaxed">
+                Hi everyone! I'm <span className="text-primary font-semibold">Shubham Jha</span> from <span className="text-primary">Mumbai, India</span>.
+                <br />
+                Currently navigating my final years at <span className="text-primary">VESIT</span>, pursuing a degree in <span className="text-primary">Information Technology</span>.
+            </p>
 
-                    <div className="pt-4 border-t border-primary/20 italic text-center">
-                        <p className="text-primary">"If you always make the best move irrespective of your position, its very hard to lose!"</p>
-                        <footer className="mt-1 text-sm text-text-400">— Shubham</footer>
-                    </div>
-                </blockquote>
+            {/*Hobby Grid */}
+            <div className="space-y-4">
+                <p className="text-text-100 font-medium">Beyond the screen, I find balance in:</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {Hobbies.map((hobby) => (
+                        <li key={hobby.text} className="flex gap-4 items-center p-3 rounded-xl bg-background-900/50 border border-primary/10 hover:border-primary/40 hover:bg-primary/5 transition-all 
+                        duration-500 group">
+                            <span className="text-2xl  group-hover:scale-125 transition-transform">{hobby.icon}</span>
+                            <span className="font-medium">{hobby.text}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
-            <div className="relative group md:flex-1 flex items-center justify-center">
-                <div
-                    className="absolute inset-0 scale-125 border-accent-400 border-2 blur-3xl rounded-full  bg-primary/10 group-hover:blur-2xl transition-all duration-700"
-                />
-                <img src={HeroImage} alt="person using laptop"/>
+
+            {/* Quote Box */}
+            <div className="relative p-6 mt-8 rounded-2xl bg-linear-to-br from-primary/10 to-transparent border-l-4 border-primary italic">
+                <p className="text-primary text-xl font-serif">
+                    "If you always make the best move irrespective of your position, it's very hard to lose!"
+                </p>
+                <footer className="mt-2 text-sm text-text-400 not-italic">— Shubham Jha</footer>
             </div>
-        </Card>
+        </div>
+    </div>
+
+    {/* Using your generic HeroImageCard */}
+    <div className="md:flex-1 w-full max-w-md md:-mt-40">
+        <HeroImageCard img={HeroImage} className="scale-125" />
+    </div>
+</Card>
         <Card>
             <h2 className={`${SECTION_HEADER}`}>
                 Professional <strong className="text-primary">Skillset </strong>
