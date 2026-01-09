@@ -15,12 +15,19 @@
         100% { transform: rotate(0deg); }
     }
 
+    --animate-load: load 6s linear infinite;
+    @keyframes load {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
 
 
     --color-text: #e9eaea;
     --color-background: #070808;
     --color-primary: #8eebe8;
-    --color-secondary: #204085;
+    --color-secondary: #336e6e;
     --color-accent: #54d4d4;
     
     --color-text-50: #f2f3f3;
@@ -59,17 +66,17 @@
     --color-primary-900: #082b2a;
     --color-primary-950: #041615;
 
-    --color-secondary-50: #eaeffa;
-    --color-secondary-100: #d6e0f5;
-    --color-secondary-200: #adc1eb;
-    --color-secondary-300: #84a1e1;
-    --color-secondary-400: #5b82d7;
-    --color-secondary-500: #3263cd;
-    --color-secondary-600: #284fa4;
-    --color-secondary-700: #1e3b7b;
-    --color-secondary-800: #142852;
-    --color-secondary-900: #0a1429;
-    --color-secondary-950: #050a15;
+    --color-secondary-50: #eef7f7;
+    --color-secondary-100: #dcefef;
+    --color-secondary-200: #b9dfdf;
+    --color-secondary-300: #96cfcf;
+    --color-secondary-400: #73bfbf;
+    --color-secondary-500: #50afaf;
+    --color-secondary-600: #408c8c;
+    --color-secondary-700: #306969;
+    --color-secondary-800: #204646;
+    --color-secondary-900: #102323;
+    --color-secondary-950: #081111;
 
     --color-accent-50: #ebfafa;
     --color-accent-100: #d6f5f5;
