@@ -26,6 +26,7 @@ export const Button = ({
         <button 
         className={cn(
             "relative inline-flex items-center justify-center rounded-xl transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none overflow-hidden group",
+            "hover:cursor-pointer",
             sizeStyles[size],
             variantStyles[variant],
             className

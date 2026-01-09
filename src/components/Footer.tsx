@@ -12,10 +12,10 @@ export const Footer = ()=>{
             <p className="flex justify-center items-center col-span-5">Designed and Developed by&nbsp;
                 <Link to={'/about'} className="text-primary">{name}</Link>
             </p>
-            <p className="flex items-center justify-center col-span-4">Copyright © {year} &nbsp;
+            <p className="flex items-center justify-center col-span-3">Copyright © {year} &nbsp;
                 <Link to={'/about'} className="text-primary">{initials}</Link>
             </p>
-            <div className='flex justify-center items-center gap-4 text-primary col-span-3'>
+            <div className='flex justify-center items-center gap-4 text-primary col-span-4'>
                 <SocialIcon href={githubLink} label={`${firstName}'s github`} icon={FaGithub}/>
                 <SocialIcon href={xLink} label={`${firstName}'s x profile`} icon={FaXTwitter }/>
                 <SocialIcon href={linkedinLink} label={`${firstName}'s linkedin`} icon={FaLinkedinIn}/>
