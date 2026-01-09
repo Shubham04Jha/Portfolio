@@ -48,7 +48,10 @@ export const About = ()=>{
                     </div>
                 </blockquote>
             </div>
-            <div className="md:flex-1 flex items-center justify-center">
+            <div className="relative group md:flex-1 flex items-center justify-center">
+                <div
+                    className="absolute inset-0 scale-125 border-accent-400 border-2 blur-3xl rounded-full  bg-primary/10 group-hover:blur-2xl transition-all duration-700"
+                />
                 <img src={HeroImage} alt="person using laptop"/>
             </div>
         </Card>

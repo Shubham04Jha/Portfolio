@@ -30,7 +30,10 @@ const Hero = ()=>{
                         <Type />
                     </div>
                 </div>
-            <div className="md:flex-1 md:order-last order-first">
+            <div className="relative group md:flex-1 md:order-last order-first">
+                <div
+                    className="absolute inset-0 scale-125 border-accent-400 border-2 blur-2xl rounded-full  bg-primary/5 group-hover:blur-xl transition-all duration-300"
+                />
                 <img src={HomeImage} alt="person using laptop"
                 className="w-full drop-shadow-2xl animate-float aspect-square object-cover"/>
             </div>
