@@ -1,6 +1,6 @@
 import { FaHand,  } from "react-icons/fa6"
 import DATA from "../../config";
-import HomeImage from "../../assets/Home.png";
+import HomeImage from "../../assets/scaledDownHome.png";
 import { Type } from "./Type";
 import { SocialSection } from "./SocialSection";
 import { Introduction } from "./Introduction";

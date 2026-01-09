@@ -46,7 +46,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                     />
                 ) : (
                     /*Fallback */
-                    <div className="flex flex-col h-full items-center justify-center gap-2 opacity-40">
+                    <div className="flex flex-col h-full items-center justify-center gap-2 opacity-40 group-hover:scale-110">
                         <div className="size-12 rounded-full border-2 border-dashed border-primary animate-load" />
                         <span className="text-xs uppercase tracking-widest text-primary">Preview Unavailable</span>
                     </div>

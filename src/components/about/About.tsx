@@ -1,7 +1,7 @@
 import { useCodingActivity } from "../../hooks/useCodingActivity"
 import { CodingActivity } from "./CodingActivity";
 import { cn } from "../../utils/cn";
-import HeroImage from "../../assets/about.png";
+import HeroImage from "../../assets/scaledDownAbout.png";
 import { Techstack } from "./Techstack";
 import { Toolstack } from "./Toolstack";
 import { Reachout } from "../Reachout";
