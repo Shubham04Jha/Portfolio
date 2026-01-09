@@ -1,4 +1,3 @@
-import { FaBook, FaHandPointRight } from "react-icons/fa6";
 import { useCodingActivity } from "../../hooks/useCodingActivity"
 import { CodingActivity } from "./CodingActivity";
 import { cn } from "../../utils/cn";
