@@ -1,5 +1,6 @@
 import Avatar from "../../assets/avatar.png"; 
 import { cn } from "../../utils/cn";
+import DATA from "../../config";
 
 export const Introduction = () => {
     return (
@@ -34,7 +35,7 @@ export const Introduction = () => {
                     <div className={cn("relative size-64 md:size-80 rounded-full  border-primary/20 p-2 overflow-hidden "," backdrop-blur-sm border-4 bg-background-900/50")}>
                         <img 
                             src={Avatar} 
-                            alt="Shubham Jha Avatar" 
+                            alt={`${DATA.name} Avatar `}
                             className="w-[125%] h-[125%] object-cover animate-float"
                         />
                     </div>
