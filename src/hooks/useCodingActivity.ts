@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getCodeforcesActivity } from "./utils/getCodeforces";
+
+const codingActivityURL = 'https://porfolio-backend1.vercel.app/coding-activity';
 
 export interface CalendarData{
     date: string;
@@ -7,25 +8,13 @@ export interface CalendarData{
     level: number;
 }
 
-const getCalendarFormat = (activityMap: Map<string,number>)=>{
-    const data:CalendarData[] = [];
-    const d = new Date();
-    d.setUTCHours(0, 0, 0, 0);
-    const todayKey = d.toISOString().slice(0,10);
-    d.setUTCDate(d.getUTCDate()-365); // 1 year back
-    const prevYearKey = d.toISOString().substring(0,10);
-
-    activityMap.set(todayKey,activityMap.get(todayKey)??0);
-    activityMap.set(prevYearKey,activityMap.get(prevYearKey)??0);
-    for(const activity of activityMap){
-        if(prevYearKey.localeCompare(activity[0])<=0) data.push({
-            date: activity[0],
-            count: activity[1],
-            level: getLevel(activity[1]),
-        })
-    }
-    data.sort((a,b)=>a.date.localeCompare(b.date));
-    return data;
+const getCalendarFormat = (data: {date: string, count: number}[]): CalendarData[]=>{
+    return data.map((d)=>{
+        return {
+            ...d,
+            level : getLevel(d.count)
+        }
+    })
 }
 
 const levels = [0,1,1,2,2,2,3,3,3,4];
@@ -42,9 +31,13 @@ export const useCodingActivity = ()=>{
     useEffect(()=>{
         (async ()=>{
             try {
-                const map = new Map<string,number>();
-                const activityMap = await getCodeforcesActivity(map);
-                setData(getCalendarFormat(activityMap));
+                const res = await fetch(codingActivityURL,{
+                    headers:{
+                        'secret-header':'whothehellwasthat'
+                    }
+                });
+                const data = await res.json();
+                setData(getCalendarFormat(data.data));
             } catch (error) {
                 setError(error instanceof(Error)?error.message??"Error occurred while getting coding activity":"Unknown Error");
             }finally{
