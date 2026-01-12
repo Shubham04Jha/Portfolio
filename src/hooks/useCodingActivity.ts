@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { codingActivity, portfolioBackend, secretHeader } from "../config";
 
-const codingActivityURL = 'https://porfolio-backend1.vercel.app/coding-activity';
+const URL = portfolioBackend+codingActivity;
 
 export interface CalendarData{
     date: string;
@@ -31,9 +32,9 @@ export const useCodingActivity = ()=>{
     useEffect(()=>{
         (async ()=>{
             try {
-                const res = await fetch(codingActivityURL,{
+                const res = await fetch(URL,{
                     headers:{
-                        'secret-header':'whothehellwasthat'
+                        'secret-header':secretHeader
                     }
                 });
                 const data = await res.json();

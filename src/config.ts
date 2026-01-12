@@ -3,7 +3,7 @@ const DATA = {
     firstName: "Shubham",
     lastName: "Jha",
     initials: "SJ",
-    xLink: "https://x.com/Shubham37026784",
+    xLink: "https://x.com/_ShubhamJha04",
     githubLink: "https://github.com/Shubham04Jha",
     linkedinLink: "https://www.linkedin.com/in/shubham-jha-85522528a/",
     leetcodeLink: "https://leetcode.com/u/shubham04jha/",
@@ -13,5 +13,10 @@ const DATA = {
 
 export const codeforcesLink = "https://codeforces.com/profile/Shubham_04Jha";
 export const codeforcesProfile= codeforcesLink.split("profile/")[1];
+
+export const portfolioBackend = 'https://porfolio-backend1.vercel.app';
+export const codingActivity = '/coding-activity';
+export const reachOut = '/reach-out';
+export const secretHeader='whothehellwasthat'
 
 export default DATA;
