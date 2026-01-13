@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { codingActivity, portfolioBackend, verificationHeader } from "../config";
+import { codingActivity, portfolioBackend } from "../config";
 
 const URL = portfolioBackend+codingActivity;
 
@@ -32,11 +32,7 @@ export const useCodingActivity = ()=>{
     useEffect(()=>{
         (async ()=>{
             try {
-                const res = await fetch(URL,{
-                    headers:{
-                        'secret-header':verificationHeader
-                    }
-                });
+                const res = await fetch(URL);
                 const data = await res.json();
                 setData(getCalendarFormat(data.data));
             } catch (error) {

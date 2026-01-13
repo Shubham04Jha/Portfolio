@@ -1,7 +1,7 @@
 import {Form} from 'radix-ui'
 import { Button } from './ui/Button';
 import { cn } from "../utils/cn";
-import { portfolioBackend, reachOut, verificationHeader } from '../config';
+import { portfolioBackend, reachOut } from '../config';
 import { Toast } from './ui/Toast';
 import { useState } from 'react';
 
@@ -11,7 +11,6 @@ const submitForm = async (data: {[k: string]: FormDataEntryValue})=>{
     return await fetch(URL,{
         method: 'POST',
         headers:{
-            'secret-header':verificationHeader,
             'Content-Type':'application/json'
         },
         body:JSON.stringify(data)
