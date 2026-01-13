@@ -14,9 +14,9 @@ const DATA = {
 export const codeforcesLink = "https://codeforces.com/profile/Shubham_04Jha";
 export const codeforcesProfile= codeforcesLink.split("profile/")[1];
 
-export const portfolioBackend = 'https://porfolio-backend1.vercel.app';
+export const portfolioBackend = 'https://porfolio-backend1.vercel.app/api';
 export const codingActivity = '/coding-activity';
 export const reachOut = '/reach-out';
-export const secretHeader='whothehellwasthat'
+export const verificationHeader='whothehellwasthat'
 
 export default DATA;

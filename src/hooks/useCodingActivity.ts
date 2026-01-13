@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { codingActivity, portfolioBackend, secretHeader } from "../config";
+import { codingActivity, portfolioBackend, verificationHeader } from "../config";
 
 const URL = portfolioBackend+codingActivity;
 
@@ -34,7 +34,7 @@ export const useCodingActivity = ()=>{
             try {
                 const res = await fetch(URL,{
                     headers:{
-                        'secret-header':secretHeader
+                        'secret-header':verificationHeader
                     }
                 });
                 const data = await res.json();
