@@ -8,11 +8,13 @@ import { Background } from './components/Background'
 import { Reachout } from './components/Reachout'
 import { Projects } from './components/projects/Projects'
 import { Resume } from './components/Resume'
+import { Toast } from 'radix-ui'
 
 function App() {
 
   return (
-    <BrowserRouter>
+    <Toast.Provider>
+     <BrowserRouter>
       <div className='text-text flex flex-col pt-20 min-h-dvh max-w-5xl mx-auto'>
         <Navbar />
         <Background/>
@@ -29,6 +31,8 @@ function App() {
         <Footer/>
       </div>
     </BrowserRouter>
+      <Toast.Viewport className="fixed bottom-8 right-4 flex flex-col min-w-xs max-w-xl m-0 list-none z-1000 outline-none" />
+    </Toast.Provider>
   )
 }
 
