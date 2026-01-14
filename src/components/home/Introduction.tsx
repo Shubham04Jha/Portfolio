@@ -1,4 +1,4 @@
-import Avatar from "../../assets/avatar.png"; 
+import Avatar from "../../assets/userAvatar.png"; 
 import { cn } from "../../utils/cn";
 import DATA from "../../config";
 
