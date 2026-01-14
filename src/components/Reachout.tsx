@@ -31,19 +31,17 @@ export const Reachout = () => {
                 e.preventDefault();
                 try {
                     const data = Object.fromEntries(new FormData(e.currentTarget));
-                    console.log(data);
-                    const res = await submitForm(data);
-                    const responseData = (await res.json()).data;
-
-                    if(responseData.success){
+                    const res: Response = await submitForm(data);
+                    if(res.ok){
                         setToast({ open: true,variant:'success', message: 'Successfully sent the message' });
+                        (e.target as HTMLFormElement).reset();
                     }else{
-                        setToast({ open: true,variant:'error', message: 'Error occurred' });
+                        setToast({ open: true,variant:'error', message: 'Error occurred but not caught' });
                     }
-                } catch {
+                } catch (error) {
+                    console.log(error);
                     setToast({ open: true,variant:'error', message:'Error occurred!' });
                 }
-                // e.preventDefault();
             }}>
                 {/* Email Field */}
                 <Form.Field name="email">
@@ -67,7 +65,7 @@ export const Reachout = () => {
                 </Form.Field>
 
                 {/* Message/Question Field */}
-                <Form.Field name="question" >
+                <Form.Field name="message" >
                     <div className={labelRowClasses}>
                         <Form.Label className="text-sm font-medium text-text-300">Message</Form.Label>
                         <Form.Message className="text-xs text-accent animate-pulse" match="valueMissing">

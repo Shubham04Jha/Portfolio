@@ -19,7 +19,7 @@ export const Projects = ()=>{
                 </p>
             </header>
             <ul className="grid md:grid-cols-3 grid-cols-1 gap-8">
-                {ProjectsList.map(project=><ProjectCard project={project} className="" />)}
+                {ProjectsList.map(project=><ProjectCard project={project} className="" key={project.title} />)}
             </ul>
         </div>
     )

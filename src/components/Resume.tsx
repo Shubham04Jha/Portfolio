@@ -8,6 +8,7 @@ import { Reachout } from "./Reachout";
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { cn } from "../utils/cn";
+import DATA from "../config";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -29,7 +30,7 @@ export const Resume = () => {
     return (
         <div className="pb-12 flex flex-col items-center gap-4 max-w-5xl mx-auto px-4">
             <div className="flex flex-col items-center">
-                <a href={pdf} download="Shubham_Jha_Resume.pdf">
+                <a href={pdf} download={`${DATA.name}_Resume.pdf`}>
                     <Button variant="accent" size="xl" className="shadow-accent/20">
                         <div className="flex gap-3 items-center">
                             <FaDownload className="animate-bounce" />
