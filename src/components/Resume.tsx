@@ -1,7 +1,7 @@
 import { FaDownload } from "react-icons/fa6";
 import { pdfjs, Document, Page } from 'react-pdf';
 import { useState, useEffect } from "react";
-import pdf from "../assets/shubhamJanuaryPublic.pdf";
+import pdf from "../assets/shubham_latest_public_resume.pdf";
 import { Button } from "./ui/Button";
 import { Reachout } from "./Reachout";
 
