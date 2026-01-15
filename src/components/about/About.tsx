@@ -42,6 +42,9 @@ export const About = ()=>{
                 Days I <strong className="text-primary">Code</strong>
             </p>
             <CodingActivity data={data} loading={loading} />
+            <p className="text-xs mt-4">
+                *created by aggregating both my development and dsa activity
+            </p>
         </Card>
         <Reachout />
     </section>

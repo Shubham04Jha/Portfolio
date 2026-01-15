@@ -7,10 +7,16 @@ const explicitTheme = {
 }
 
 export const CodingActivity = ({data,loading}: {data: CalendarData[],loading: boolean})=>{
-    if(data.length==0) return;
-    return <ActivityCalendar showWeekdayLabels 
+    if(data.length==0) return null;
+    const startDate = new Date(data[0].date).toDateString().slice(3);
+    const endDate = new Date(data[data.length - 1].date).toDateString().slice(3);
+    return <>
+        <ActivityCalendar showWeekdayLabels 
             data={data} 
             theme={explicitTheme} 
+            labels={{
+                totalCount: "{{count}} activities from "+startDate+" to "+endDate
+            }}
             tooltips={{
                 activity: {
                     text: activity => `${activity.count} ${activity.count>1?'activities':'activity'} on ${new Date(activity.date).toDateString()}`,
@@ -28,5 +34,6 @@ export const CodingActivity = ({data,loading}: {data: CalendarData[],loading: bo
                 },
             }}
             loading={loading}
-            />
+        />
+    </>
 }
