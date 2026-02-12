@@ -1,6 +1,4 @@
 # todos
-13) routes changed by swiping is not getting reflected in navbar..
-20) make my-images https basically setup a https certificate.
 
 # priority
 
@@ -8,7 +6,6 @@
 # long term
 12) continue after mistake in the typewritter effect..
 15) sorting of projects utility... only when lots of projects will be there.
-20) Resume projects are not valid as repos are private. (long term)
 
 
 # done
@@ -26,12 +23,13 @@
 9) use useRef to decide whether you were dragging or not. so as to distinguish between click or drag. XXX
 10) add home and reachout. (done)
 11) wanted the image to pop out of the top border... have to thing about it later... current one is satisfactory.
+13) routes changed by swiping is not getting reflected in navbar..(done)
 14) scale down the images to be at around 100kb for loading speed.(done)
 16) add the project images in project readme and use the public url available through github github pages. (done)
 17) add functionality to the Reachout component. 
 18) update the projectList with correct github links.
 19) use cleaner image like soumyajit (done)
-
+20) make my-images https basically setup a https certificate. (done)
 
 
 CheckList before modifying with time

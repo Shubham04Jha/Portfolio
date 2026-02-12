@@ -8,13 +8,12 @@ export const useVisitorCount = () => {
         const counter = new Counter({ workspace: "shubham-jha-portfolio-website" });
         const hasVisited = sessionStorage.getItem("hasVisited");
         if(!hasVisited) {
-            sessionStorage.setItem('hasVisited','yes');
-            counter.up("counterviews")
+            counter.up("countviews")
             .then((result: any) => {
             setCount(result.data.up_count);
             sessionStorage.setItem("hasVisited", "true"); // mark as visited
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))
         }else{
             counter.get("countviews")
             .then((result: any) => setCount(result.data.up_count))

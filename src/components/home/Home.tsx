@@ -28,7 +28,11 @@ const Hero = ()=>{
             <div className=" md:flex-2 md:text-4xl text-3xl tracking-wide space-y-6 -mb-4">
                 <div className="flex gap-16 items-center">
                     <h1 className="mt-3 text-xl">Hi There!
-                        {count?<span className="text-primary">{" "+count+getOrdinalSuffix(count)} visitor</span> :<></>}
+                        {count !== null && (
+                        <span className="text-primary">
+                            {" " + count + getOrdinalSuffix(count)} visitor
+                        </span>
+                        )}
                     </h1>
                     <HandWave/>
                 </div>
