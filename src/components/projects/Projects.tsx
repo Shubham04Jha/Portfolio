@@ -58,9 +58,22 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             {/*content sec*/}
             <div className="p-6 flex flex-col grow space-y-6">
                 <div className="w-fit">
-                    <h3 className="text-2xl text-primary font-semibold tracking-wide">
-                        {title}
-                    </h3>
+                    {hostedLink ? (
+                        <a
+                        href={hostedLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block group"
+                        >
+                            <h3 className="text-2xl text-primary font-semibold tracking-wide">
+                                {title}
+                            </h3>
+                        </a>
+                    ) : (
+                        <h3 className="text-2xl text-primary font-semibold tracking-wide">
+                            {title}
+                        </h3>
+                    )}
                     <div className="h-1 w-full bg-primary rounded-full origin-left group-hover:scale-x-110 transition-transform duration-500" />
                 </div>
 
