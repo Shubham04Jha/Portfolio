@@ -1,118 +1,190 @@
-# todos
+# 🌌 Interactive Engineering Portfolio
 
-# priority
+Live: https://your-portfolio-domain.com
 
+An interactive, performance-focused engineering portfolio built to showcase projects, technical depth, and frontend engineering capabilities through immersive UI experiences.
 
-# long term
-12) continue after mistake in the typewritter effect..
-15) sorting of projects utility... only when lots of projects will be there.
+Rather than being a static portfolio, this project explores interaction design, animation performance, gesture handling, and scalable frontend architecture.
 
+---
 
-# done
-1) change the theme of images to the primary or accent colors. (done)
-2) add github's data for coding activity. {
-  thinking of creating a backend for this.
-  it will aggregate the data required by coding calender
-} (done)
-3) current garbage collection spike due to filter method after every click ig. XXX (read 7)
-4) hydration error due to button under button. (fixed using asChild prop and accepting remaining prop in child) (done)
-5) Use seperate arrays to reduce the bloat in useStarField. XXX (draw constellation will become complex and 2 seperate interfaces... and no real performance boost too so no)
-6) Use Math.min(stars[i].size,stars[j].size) for opacity determinism too. (done)
-7) filter is more optimally performance wise even with garbage collector overhead and atleast its constant whereas the dormant stars has no upper limit and can cause massive memory leaks. (done)
-8) in useDrag if some state is not used for rendering use useRef. XXX
-9) use useRef to decide whether you were dragging or not. so as to distinguish between click or drag. XXX
-10) add home and reachout. (done)
-11) wanted the image to pop out of the top border... have to thing about it later... current one is satisfactory.
-13) routes changed by swiping is not getting reflected in navbar..(done)
-14) scale down the images to be at around 100kb for loading speed.(done)
-16) add the project images in project readme and use the public url available through github github pages. (done)
-17) add functionality to the Reachout component. 
-18) update the projectList with correct github links.
-19) use cleaner image like soumyajit (done)
-20) make my-images https basically setup a https certificate. (done)
+## ✨ Highlights
 
+- HTML5 Canvas starfield & constellation renderer
+- Interactive animated background
+- Draggable floating mobile menu
+- Fully responsive layout
+- Developer activity aggregation display
+- Contact & outreach pipeline
+- Performance-optimized asset delivery
+- Serverless-backed data aggregation
 
-CheckList before modifying with time
-1) Change the about description.. route: /about (tools, status, techstack, hobbies)
-2) Change the resume.   route: /resume   
-3) Add projects.        route: /projects (projectList tbh nothing else)
-4) perhaps stream line the process using some configs or something...
-5) config.ts
-6) check with the portfolio-backend1 about the returning data... anyways its general date and count.
-current api returns data since 1year back the same date as today. and by default is sorted (some nuance with github but nvm).
+The goal is a **polished, interactive portfolio** demonstrating engineering quality rather than a simple showcase website.
 
+---
 
+## 🚀 Demo
 
-# React + TypeScript + Vite
+Live portfolio:  
+👉 [Interactive portfolio website](https://github.com/Shubham04Jha/Portfolio)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🧠 Engineering Focus Areas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Canvas Rendering System
+A custom starfield & constellation renderer using HTML5 Canvas.
 
-## React Compiler
+Features include:
+- Dynamic star rendering
+- Interactive connections
+- Performance tuning for mobile devices
+- Memory vs compute tradeoff evaluations
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Implemented using a reusable `useStarField` hook.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Gesture & Interaction Engineering
+A floating menu can be dragged across the screen while still supporting click interactions.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+A custom `useDrag` hook handles:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Drag vs click intent detection
+- Movement threshold handling
+- Pointer lifecycle correctness
+- Compatibility with Radix UI controlled components
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+### UI Architecture Decisions
+Significant effort went into ensuring:
+
+- Dragging does not trigger menu clicks
+- Controlled components behave correctly
+- No event-order hacks are required
+- UI remains predictable across devices
+
+---
+
+### Performance Optimizations
+Includes:
+
+- Optimized image loading
+- Reduced asset sizes
+- Responsive layout constraints
+- Hydration fixes
+- Mobile UX improvements
+
+Thumbnail images are served via:
+
+- Amazon S3 storage
+- CloudFront CDN distribution
+
+for faster global delivery.
+
+---
+
+### Backend Integration
+The frontend consumes serverless APIs that:
+
+- Aggregate GitHub contribution data
+- Fetch LeetCode statistics
+- Fetch Codeforces statistics
+- Cache responses to reduce API rate limits
+- Protect API tokens
+
+The backend runs independently as serverless functions on Vercel.
+
+Backend repository is linked below.
+
+---
+
+## 🛠 Tech Stack
+
+Frontend:
+- React
+- TypeScript
+- TailwindCSS
+- Radix UI
+- HTML5 Canvas
+- Vercel Hosting
+
+Backend services:
+- Vercel Serverless Functions
+- Aggregation APIs
+- Response caching
+
+Assets:
+- Amazon S3
+- CloudFront CDN
+
+---
+
+## 📦 Local Development
+
+```bash
+git clone https://github.com/Shubham04Jha/Portfolio.git
+cd portfolio-frontend
+npm install
+npm run dev
+````
+
+Environment variables may be required depending on API configuration.
+
+---
+
+## 📁 Project Structure (Simplified)
+
+```
+src/
+ ├── components/
+ ├── hooks/
+ │   ├── useStarField
+ │   └── useDrag
+ └── utils/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Core logic resides mainly in custom hooks and interactive components.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📈 Impact Goals
+
+Success metrics include:
+
+* Positive user feedback
+* Recruiter engagement
+* GitHub stars & forks
+* Portfolio traffic
+* Community interest
+
+---
+
+## 🔮 Planned Improvements
+
+* Additional projects & case studies
+* Content polish & storytelling
+* Improved reachout UX
+* Config-driven project management
+* Further animation refinement
+
+---
+
+## 🔗 Backend Repository
+
+This portfolio relies on a separate backend repository providing aggregation and messaging APIs and may require environment variables for personal use case do check the backend repo to understand how you could customise:
+
+👉 **[Backend Repo](https://github.com/Shubham04Jha/portfolio-backend)**
+
+---
+
+## 📬 Contact
+
+If you'd like to collaborate or discuss opportunities, feel free to reach out via the portfolio contact section.
+
+---
+
+## ⭐ If you like this project
+
+Consider giving the repo a star!
