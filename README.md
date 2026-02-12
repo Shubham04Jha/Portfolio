@@ -1,3 +1,50 @@
+# todos
+13) routes changed by swiping is not getting reflected in navbar..
+20) make my-images https basically setup a https certificate.
+
+# priority
+
+
+# long term
+12) continue after mistake in the typewritter effect..
+15) sorting of projects utility... only when lots of projects will be there.
+20) Resume projects are not valid as repos are private. (long term)
+
+
+# done
+1) change the theme of images to the primary or accent colors. (done)
+2) add github's data for coding activity. {
+  thinking of creating a backend for this.
+  it will aggregate the data required by coding calender
+} (done)
+3) current garbage collection spike due to filter method after every click ig. XXX (read 7)
+4) hydration error due to button under button. (fixed using asChild prop and accepting remaining prop in child) (done)
+5) Use seperate arrays to reduce the bloat in useStarField. XXX (draw constellation will become complex and 2 seperate interfaces... and no real performance boost too so no)
+6) Use Math.min(stars[i].size,stars[j].size) for opacity determinism too. (done)
+7) filter is more optimally performance wise even with garbage collector overhead and atleast its constant whereas the dormant stars has no upper limit and can cause massive memory leaks. (done)
+8) in useDrag if some state is not used for rendering use useRef. XXX
+9) use useRef to decide whether you were dragging or not. so as to distinguish between click or drag. XXX
+10) add home and reachout. (done)
+11) wanted the image to pop out of the top border... have to thing about it later... current one is satisfactory.
+14) scale down the images to be at around 100kb for loading speed.(done)
+16) add the project images in project readme and use the public url available through github github pages. (done)
+17) add functionality to the Reachout component. 
+18) update the projectList with correct github links.
+19) use cleaner image like soumyajit (done)
+
+
+
+CheckList before modifying with time
+1) Change the about description.. route: /about (tools, status, techstack, hobbies)
+2) Change the resume.   route: /resume   
+3) Add projects.        route: /projects (projectList tbh nothing else)
+4) perhaps stream line the process using some configs or something...
+5) config.ts
+6) check with the portfolio-backend1 about the returning data... anyways its general date and count.
+current api returns data since 1year back the same date as today. and by default is sorted (some nuance with github but nvm).
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
