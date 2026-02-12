@@ -1,16 +1,24 @@
 
 export interface Project{
-            imageLink?: string,
-            title:string,
-            description:string,
+    imageLink?: string,
+    title:string,
+    description:string,
     hostedLink?: string, githubLink:string
 }
 export const ProjectsList: Project[] = [
     {
-        imageLink:'http://shubhamjha.me/my-images/portfolio/portfolioPreview.png',
+        imageLink:'https://d9b2ihs3ufej0.cloudfront.net/images/portfolio-projects/portfolio-thumbnail.png',
         title:'Portfolio Website',
-        description:'A mobile-first portfolio featuring a custom Canvas starfield background and Radix UI components.',
-        githubLink:'https://github.com/Shubham04Jha/Portfolio'
+        description:'Performance-optimized React portfolio featuring a custom physics-based Canvas starfield, gesture-intent architecture for mobile UI, and serverless GitHub/DSA data aggregation with secure caching.',
+        githubLink:'https://github.com/Shubham04Jha/Portfolio',
+        hostedLink:'https://www.shubhamjha.me'
+    },
+    {
+        imageLink:'https://d9b2ihs3ufej0.cloudfront.net/images/portfolio-projects/portfolio-thumbnail.png',
+        title: 'Web3Wallet',
+        description: 'Secure browser HD wallet with encrypted local key management and on-demand private key access using Web Crypto APIs',
+        githubLink: 'https://github.com/Shubham04Jha/web3wallet',
+        hostedLink: 'https://web3wallet.projects.shubhamjha.me'
     },
     // {
     //     title: 'Open Brain',
@@ -25,7 +33,7 @@ export const ProjectsList: Project[] = [
     // },
     {
         title: 'Micrograd Engine',
-        description: 'A minimal autograd engine reimplemented from scratch in Python using OOP. Modeled computation graphs for backpropagation, enabling a deep understanding of gradient tracking and neural network forward/backward passes.',
+        description: 'Minimal autograd engine in Python using OOP. Enabling a deeper understanding of gradient tracking and neural network forward/backward passes.',
         githubLink: 'https://github.com/Shubham04Jha/Micrograd_learning',
     }
 ];
