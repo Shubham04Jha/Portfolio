@@ -6,7 +6,6 @@ import { cn } from "../../utils/cn";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { NavMobile } from "./NavMobile";
 import type { IconType } from "react-icons";
-import { useState } from "react";
 
 
 
@@ -37,21 +36,17 @@ export const Navbar = () => {
 };
 
 const NavDesktop = ()=>{
-    const location = useLocation();
-    const [selected,setIsSelected] = useState<string>(location.pathname);
+    const location = useLocation(); // this itself gives the state...
     return (
         <NavigationMenu.List className={cn("flex items-center w-full justify-around gap-8")} >
           {
             NAV_ITEMS.map((item)=>
             <NavItem 
-                selected={selected}
+                selected={location.pathname}
                 icon={item.icon}
                 text={item.label}
                 key={item.path}
                 path={item.path}
-                onClick= {()=>{
-                    setIsSelected(item.path);
-                }}
             />)
           }
           <NavigationMenu.Indicator className="border-b border-accent/10"/>
