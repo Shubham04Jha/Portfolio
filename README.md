@@ -1,6 +1,6 @@
 # 🌌 Interactive Engineering Portfolio
 
-Live: https://your-portfolio-domain.com
+Live: https://shubhamjha.me
 
 An interactive, performance-focused engineering portfolio built to showcase projects, technical depth, and frontend engineering capabilities through immersive UI experiences.
 
