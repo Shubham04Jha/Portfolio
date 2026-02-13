@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {DropdownMenu}  from "radix-ui";
 import { Menu as MenuIcon, type LucideIcon } from "lucide-react";
 import { ButtonIcon } from "../ui/icons/ButtonIcon";
@@ -14,9 +13,7 @@ export const NavMobile = ({NAV_ITEMS}:{NAV_ITEMS:{label: string, path: string, i
     const location = useLocation();
     const navigate = useNavigate();
     const {isDragging, position, isOpen, onOpenChange, dragHandlers} = useDrag();
-    const [selected,setSelected] = useState(location.pathname);
     const handleNavigation = (path: string) => {
-        setSelected(path);
         navigate(path);
     };
     return (
@@ -41,20 +38,20 @@ export const NavMobile = ({NAV_ITEMS}:{NAV_ITEMS:{label: string, path: string, i
       sideOffset={15}
       className="min-w-50 bg-background-950/50 backdrop-blur-lg border border-primary/20 rounded-2xl p-2 shadow-lg shadow-accent/10 "
       >
-        <DropdownMenu.RadioGroup value={selected} onValueChange={handleNavigation}>
+        <DropdownMenu.RadioGroup value={location.pathname} onValueChange={handleNavigation}>
           {
           NAV_ITEMS.map((item) =>
             <DropdownMenu.RadioItem
               key={item.path}
               value={item.path}
-              className={cn("relative flex items-center gap-4 px-4 py-3 text-lg text-text-200 rounded-xl",selected===item.path&&'bg-primary/5 rounded-xl border border-primary/10')}
+              className={cn("relative flex items-center gap-4 px-4 py-3 text-lg text-text-200 rounded-xl",location.pathname===item.path&&'bg-primary/5 rounded-xl border border-primary/10')}
             >
               {/* Custom Indicator logic */}
               <div className={cn("flex items-center justify-center w-6")}>
                 <DropdownMenu.ItemIndicator>
                   <FaDotCircle className="text-primary size-3 animate-pulse" />
                 </DropdownMenu.ItemIndicator>
-                {!selected.includes(item.path) && (
+                {!location.pathname.includes(item.path) && (
                   <item.icon className="size-5 text-text-400 group-hover:text-primary transition-colors" />
                 )}
               </div>
