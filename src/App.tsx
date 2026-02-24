@@ -9,7 +9,7 @@ import { Reachout } from './components/Reachout'
 import { Projects } from './components/projects/Projects'
 import { Resume } from './components/Resume'
 import { Toast } from 'radix-ui'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
 
