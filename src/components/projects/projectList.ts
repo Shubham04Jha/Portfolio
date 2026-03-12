@@ -16,7 +16,7 @@ export const ProjectsList: Project[] = [
     {
         imageLink:'https://d9b2ihs3ufej0.cloudfront.net/images/portfolio-projects/web3wallet-v4-thumbnail.png',
         title: 'Web3Wallet',
-        description: 'Secure browser HD wallet with encrypted local key management and on-demand private key access using Web Crypto APIs',
+        description: 'Secure browser HD wallet with encrypted local key management and on-demand private key access using Web Crypto APIs and fetch balances across chains',
         githubLink: 'https://github.com/Shubham04Jha/web3wallet',
         hostedLink: 'https://web3wallet.projects.shubhamjha.me'
     },
