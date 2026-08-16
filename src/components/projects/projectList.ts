@@ -7,16 +7,6 @@ export interface Project {
 }
 export const ProjectsList: Project[] = [
     {
-        title: 'Used Car Portal — Frontend',
-        description: 'React SPA for used-car discovery with Redux-based filtering, URL and local persistence, custom image carousels, debounced filtering, sorting, and infinite scrolling.',
-        githubLink: 'https://github.com/Shubham04Jha/useCarPage-Assignment',
-    },
-    {
-        title: 'Used Car Portal — Backend',
-        description: 'ASP.NET Core backend with layered API, BAL, DAL, and gRPC architecture, using Dapper and MySQL for filtered, sorted, and paginated stock retrieval with compile-time Mapperly mapping and centralized exception handling.',
-        githubLink: 'https://github.com/Shubham04Jha/StocksAssignment',
-    },
-    {
         imageLink: 'https://d9b2ihs3ufej0.cloudfront.net/images/portfolio-projects/portfolio-thumbnail.png',
         title: 'Portfolio Website',
         description: 'Performance-optimized React portfolio featuring a custom physics-based Canvas starfield, gesture-intent architecture for mobile UI, and serverless GitHub/DSA data aggregation with secure caching.',
@@ -29,6 +19,16 @@ export const ProjectsList: Project[] = [
         description: 'Secure browser HD wallet with encrypted local key management and on-demand private key access using Web Crypto APIs and fetch balances across chains',
         githubLink: 'https://github.com/Shubham04Jha/web3wallet',
         hostedLink: 'https://web3wallet.projects.shubhamjha.me'
+    },
+    {
+        title: 'Used Car Portal — Frontend',
+        description: 'React SPA for used-car discovery with Redux-based filtering, URL and local persistence, custom image carousels, debounced filtering, sorting, and infinite scrolling.',
+        githubLink: 'https://github.com/Shubham04Jha/useCarPage-Assignment',
+    },
+    {
+        title: 'Used Car Portal — Backend',
+        description: 'ASP.NET Core backend with layered API, BAL, DAL, and gRPC architecture, using Dapper and MySQL for filtered, sorted, and paginated stock retrieval with compile-time Mapperly mapping and centralized exception handling.',
+        githubLink: 'https://github.com/Shubham04Jha/StocksAssignment',
     },
     // {
     //     title: 'Open Brain',
