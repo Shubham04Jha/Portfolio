@@ -12,19 +12,23 @@ export const Introduction = () => {
 
                 <div className="space-y-6">
                     <p>
-                        I'm a <span className="text-primary font-semibold">Software Engineer</span> currently pursuing my B.E. in IT at <span className="text-primary">VESIT, Mumbai</span> (CGPA: 9.35). I'm passionate about building high-performance systems and seamless user experiences.
+                        I'm a <span className="text-primary font-semibold">Software Engineer at CarWale (CarTrade Tech)</span>, working with engineering teams to build and maintain web applications as part of a full-stack development environment. I completed my B.E. in Information Technology from <span className="text-primary font-semibold">VESIT, Mumbai</span>, with a <span className="text-primary font-semibold font-bold">CGPA of 9.43/10</span>.
                     </p>
 
                     <p>
-                        I am proficient in <span className="text-accent italic">Java, JavaScript, Python, and TypeScript</span>. My internship at <span className="text-primary">AudioPod AI</span> involved building functional UIs in React and designing scalable backend features.
+                        I'm proficient in <span className="text-accent italic">Java, JavaScript, Python, and TypeScript</span>, with hands-on experience across React, Node.js, ASP.NET Core, C#, and SQL.
                     </p>
 
                     <p>
-                        My key areas of interest include developing <span className="text-accent">Full Stack Web Applications</span> and exploring <span className="text-accent">Autonomous Neural Engines</span>, like my scratch-built Micrograd autograd engine.
+                        My current interests lie in <span className="text-accent">building scalable systems, understanding system design, and learning how well-engineered software evolves under real-world constraints</span>. I'm also exploring how to work effectively with <span className="text-accent">AI agents and developer tools</span>, using them to accelerate development while maintaining correctness, security, and responsible engineering practices.
                     </p>
 
                     <p>
-                        As a <span className="text-primary font-bold tracking-widest">Knight on LeetCode (1840+)</span> and a Pupil on Codeforces, I thrive on solving complex algorithmic challenges and have solved over <span className="text-primary">900+ questions</span>.
+                        I enjoy understanding systems from first principles, from building secure client-side cryptographic systems and performant interactive interfaces to implementing an automatic differentiation engine from scratch.
+                    </p>
+
+                    <p>
+                        As a <span className="text-primary font-bold tracking-widest">1900+ rated LeetCode Knight</span> and <span className="text-primary font-semibold">Pupil on Codeforces</span>, I've solved <span className="text-primary font-bold">1000+ DSA problems</span> and continue to use competitive programming to strengthen my problem-solving and algorithmic thinking.
                     </p>
                 </div>
             </div>
